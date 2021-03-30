@@ -222,8 +222,8 @@ class CustomDataset(Dataset):
             idx (int): Index of data.
 
         Returns:
-            dict: Testing data after pipeline with new keys intorduced by \
-                piepline.
+            dict: Testing data after pipeline with new keys introduced by \
+                pipeline.
         """
 
         img_info = self.data_infos[idx]
@@ -315,7 +315,7 @@ class CustomDataset(Dataset):
             recalls = eval_recalls(
                 gt_bboxes, results, proposal_nums, iou_thr, logger=logger)
             for i, num in enumerate(proposal_nums):
-                for j, iou in enumerate(iou_thr):
+                for j, iou in enumerate(iou_thrs):
                     eval_results[f'recall@{num}@{iou}'] = recalls[i, j]
             if recalls.shape[1] > 1:
                 ar = recalls.mean(axis=1)
